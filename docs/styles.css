@@ -1,0 +1,46 @@
+:root {
+    
+    --color-bg: #404A5A;
+    
+}
+
+* {
+    
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    
+}
+
+html, body {
+    
+    height: 100%;
+    width: 100%;
+    color: white;
+    background-color: var(--color-bg);
+    
+}
+
+body {
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    
+}
+
+.page-title {
+    
+    font-size: 3rem;
+    margin: 1rem;
+    
+}
+
+.tinyscroller {
+    
+    width: 50%;
+    height: auto;
+    
+}
