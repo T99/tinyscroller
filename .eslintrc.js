@@ -2,7 +2,7 @@ module.exports = {
 	
 	env: {
 		
-		node: true,
+		browser: true,
 		
 		es6: true,
 		
@@ -14,10 +14,25 @@ module.exports = {
 		
 	],
 	
-	parserOptions: {
+	overrides: [
 		
-		project: "ts/tsconfig.json",
+		{
+			files: [
+				
+				".eslintrc.js",
+				
+				"gulpfile.js",
+				
+			],
+			
+			env: {
+				
+				node: true,
+				
+			},
+			
+		},
 		
-	},
+	],
 	
 };
