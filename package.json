@@ -2,6 +2,10 @@
 	"name": "tinyscroller",
 	"version": "0.1.0",
 	"description": "An absolutely abnormally abysmally small image scroller.",
+	"files": [
+		"build/tinyscroller.min.js",
+		"build/tinyscroller.min.css"
+	],
 	"main": "js/main",
 	"scripts": {
 		"build": "gulp rebuild",
