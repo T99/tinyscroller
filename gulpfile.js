@@ -1,10 +1,10 @@
 /*
  * Created by Trevor Sears <trevor@trevorsears.com> (https://trevorsears.com/).
- * 8:48 PM -- June 16th, 2019.
- * Project: <name>
+ * 10:39 AM -- July 19, 2022.
+ * Project: tinyscroller
  * 
- * <name> - <desc>
- * Copyright (C) 2021 Trevor Sears
+ * tinyscroller - An absolutely abnormally abysmally small image scroller.
+ * Copyright (C) 2022 Trevor Sears
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,40 +21,114 @@
  */
 
 const gulp = require("gulp");
-const typescript = require("gulp-typescript");
-const sourcemaps = require("gulp-sourcemaps");
-const uglify = require("gulp-uglify-es").default;
+const uglify = require("gulp-uglify-es")["default"];
+const cleanCSS = require("gulp-clean-css");
 const del = require("del");
+const rename = require("gulp-rename");
 
 const paths = {
 	
-	typescript: {
+	source: {
 		
-		dir: "ts/",
-		allFiles: "ts/**/*.ts",
-		tsconfig: "ts/tsconfig.json"
-		
-	},
-	
-	javascript: {
-		
-		dir: "js/",
-		allFiles: "js/**/*.js",
-		entryPoint: "js/main.js",
-		entryPointFileName: "main.js"
+		dir: "src/",
+		allFiles: "src/**/*",
+		entryPoint: "src/tinyscroller.js",
+		entryPointFileName: "tinyscroller.js",
 		
 	},
 	
-	typedefs: {
+	build: {
 		
-		dir: ".d.ts/",
-		allFiles: ".d.ts/**/*.d.ts"
+		dir: "build/",
+		allFiles: "build/**/*",
+		entryPoint: "build/tinyscroller.min.js",
+		entryPointFileName: "tinyscroller.min.js",
 		
-	}
+	},
 	
 };
 
-let typescriptProject = typescript.createProject(paths.typescript.tsconfig);
+function clean() {
+	
+	return del([
+		paths.build.dir,
+	]);
+	
+}
+
+function uglifyJavaScript() {
+	
+	return gulp.src(`${paths.source.allFiles}.js`)
+		.pipe(uglify({
+			toplevel: true,
+		}))
+		.pipe(rename((path) => ({
+			dirname: path.dirname,
+			basename: paths.build.entryPointFileName,
+			extname: "",
+		})))
+		.pipe(gulp.dest(paths.build.dir))
+		.pipe(gulp.dest(`docs`));
+	
+}
+
+function buildJavaScriptPipeline(done) {
+	
+	return gulp.series(
+		uglifyJavaScript
+	)(done);
+	
+}
+
+function minifyStylesheets() {
+	
+	return gulp.src(`${paths.source.allFiles}.css`)
+		.pipe(cleanCSS())
+		.pipe(rename((path) => ({
+			dirname: path.dirname,
+			basename: `tinyscroller.min.css`,
+			extname: "",
+		})))
+		.pipe(gulp.dest(paths.build.dir))
+		.pipe(gulp.dest(`docs`));
+	
+}
+
+function buildStylesheetsPipeline(done) {
+	
+	return gulp.series(
+		minifyStylesheets
+	)(done);
+	
+}
+
+function build(done) {
+	
+	return gulp.parallel(
+		buildJavaScriptPipeline,
+		buildStylesheetsPipeline
+	)(done);
+	
+}
+
+function rebuild(done) {
+	
+	gulp.series(clean, build)(done);
+	
+}
+
+function defaultTask(done) {
+	
+	return rebuild(done);
+	
+}
+
+function watch() {
+	
+	gulp.watch([`${paths.source.allFiles}.js`], buildJavaScriptPipeline);
+	gulp.watch([`${paths.source.allFiles}.css`], buildStylesheetsPipeline);
+	
+}
 
 // The default Gulp task.
 gulp.task("default", defaultTask);
@@ -70,81 +144,3 @@ gulp.task("rebuild", rebuild);
 
 // Watch for changes to relevant files and compile-on-change.
 gulp.task("watch", watch);
-
-function defaultTask(done) {
-
-	return rebuild(done);
-	
-}
-
-function clean(done) {
-	
-	return del([
-		paths.javascript.dir,
-		paths.typedefs.dir
-	]);
-	
-}
-
-function build(done) {
-	
-	return buildJavaScriptPipeline(done);
-	
-}
-
-function rebuild(done) {
-	
-	gulp.series(clean, build)(done);
-	
-}
-
-function buildJavaScriptPipeline(done) {
-	
-	return gulp.series(
-		compileTypeScript,
-		uglifyJavaScript
-	)(done);
-	
-}
-
-function compileTypeScript(done) {
-	
-	let proj =
-		typescriptProject.src()
-			.pipe(sourcemaps.init())
-			.pipe(typescriptProject());
-	
-	let compileJS = (done) => {
-		
-		return proj.js
-			.pipe(sourcemaps.write("."))
-			.pipe(gulp.dest(paths.javascript.dir));
-		
-	};
-	
-	let compileDTS = (done) => {
-		
-		return proj.dts
-			.pipe(gulp.dest(paths.typedefs.dir));
-		
-	};
-	
-	return gulp.parallel(compileJS, compileDTS)(done);
-	
-}
-
-function uglifyJavaScript(done) {
-
-	return gulp.src(paths.javascript.allFiles)
-		.pipe(sourcemaps.init({ loadMaps: true }))
-		.pipe(uglify())
-		.pipe(sourcemaps.write("."))
-		.pipe(gulp.dest(paths.javascript.dir));
-
-}
-
-function watch(done) {
-	
-	gulp.watch([paths.typescript.allFiles], buildJavaScriptPipeline);
-	
-}
