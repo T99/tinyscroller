@@ -1,34 +1,35 @@
 {
-	"name": "<name>",
-	"version": "<version>",
-	"description": "<desc>",
+	"name": "tinyscroller",
+	"version": "0.1.0",
+	"description": "An absolutely abnormally abysmally small image scroller.",
 	"main": "js/main",
-	"types": ".d.ts/main",
 	"scripts": {
 		"build": "gulp rebuild",
-		"test": "gulp rebuild && jest"
+		"test": "gulp rebuild && jest",
+		"serve": "serve docs"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/<github_org>/<base_name>.git"
+		"url": "git+https://github.com/T99/tinyscroller.git"
 	},
-	"keywords": [],
+	"keywords": [
+		"slider",
+		"scroller",
+		"carousel"
+	],
 	"author": "Trevor Sears <trevor@trevorsears.com> (https://trevorsears.com/)",
 	"license": "GPL-3.0-or-later",
 	"bugs": {
-		"url": "https://github.com/<github_org>/<base_name>/issues"
+		"url": "https://github.com/T99/tinyscroller/issues"
 	},
-	"homepage": "https://github.com/<github_org>/<base_name>#readme",
+	"homepage": "https://t99.github.io/tinyscroller",
 	"devDependencies": {
 		"@t99/eslint-config": "latest",
-		"@types/jest": "latest",
 		"del": "latest",
 		"gulp": "latest",
-		"gulp-sourcemaps": "latest",
-		"gulp-typescript": "latest",
+		"gulp-clean-css": "^4.3.0",
+		"gulp-rename": "^2.0.0",
 		"gulp-uglify-es": "latest",
-		"jest": "latest",
-		"ts-jest": "latest",
-		"typescript": "latest"
+		"serve": "^14.0.1"
 	}
 }

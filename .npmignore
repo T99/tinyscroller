@@ -2,12 +2,11 @@
 .idea/
 
 # Ignore test files.
-.d.ts/tests/
-js/tests/
-ts/tests/
+src/tests/
+build/tests/
 
-# Ignore TypeScript files.
-ts/
+# Ignore source files.
+src/
 
 # Ignore Git/GitHub files.
 .github/

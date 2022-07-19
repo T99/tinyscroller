@@ -1,0 +1,88 @@
+/*
+ * Created by Trevor Sears <trevor@trevorsears.com> (https://trevorsears.com/).
+ * 10:47 AM -- July 19, 2022.
+ * Project: tinyscroller
+ * 
+ * tinyscroller - An absolutely abnormally abysmally small image scroller.
+ * Copyright (C) 2022 Trevor Sears
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+.tinyscroller__outercontainer {
+
+    overflow: hidden;
+
+}
+
+.tinyscroller__innercontainer {
+
+    height: 100%;
+    width: 100%;
+    display: flex;
+    scrollbar-width: none;
+    cursor: grab;
+    
+}
+
+.tinyscroller__innercontainer--orientation-horizontal {
+
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+
+}
+
+.tinyscroller__innercontainer--orientation-vertical {
+
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    
+}
+
+.tinyscroller__imgcontainer {
+
+    flex: 0 0 auto;
+    height: 100%;
+    width: 100%;
+    scroll-snap-align: center;
+    
+}
+
+.tinyscroller__image {
+    
+    height: 100%;
+    width: 100%;
+    
+}
+
+.tinyscroller__image--fit-contain {
+
+    object-fit: contain;
+
+}
+
+.tinyscroller__image--fit-cover {
+
+    object-fit: cover;
+
+}
+
+.tinyscroller__image--fit-fill {
+
+    object-fit: fill;
+
+}

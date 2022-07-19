@@ -1,10 +1,34 @@
-# TypeScript Module Template
-This repository serves as an easy-start template for TypeScript NPM packages. 
+# tinyscroller
 
-Simply clone the repository into a directory:
+An absolutely abnormally abysmally small image scroller.
 
-```bash
-$ git clone git@github.com:T99/ts-module-template.git my-new-project
+### [Find tinyscroller on NPM.](https://www.npmjs.com/package/tinyscroller)
+
+## Table of Contents
+
+ - [Installation](#installation)
+ - [Basic Usage](#basic-usage)
+ - [Documentation](#documentation)
+ - [License](#license)
+
+## Installation
+
+Install from NPM with
+
+```
+$ npm install --save tinyscroller
 ```
 
-And that's it! Your project is ready to go.
+## Basic Usage
+
+Basic usage instructions here.
+
+## Documentation
+
+See the [docs](https://t99.github.io/tinyscroller) for full documentation.
+
+## License
+
+tinyscroller is made available under the GNU General Public License v3.
+
+Copyright (C) 2022 Trevor Sears
