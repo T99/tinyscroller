@@ -65,6 +65,7 @@
     height: 100%;
     width: 100%;
     scroll-snap-align: center;
+    scroll-snap-stop: always;
     
 }
 
