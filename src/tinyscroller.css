@@ -36,6 +36,12 @@
     
 }
 
+.tinyscroller__innercontainer::-webkit-scrollbar {
+    
+    display: none;
+    
+}
+
 .tinyscroller__innercontainer--orientation-horizontal {
 
     overflow-x: scroll;
