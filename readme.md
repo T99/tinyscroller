@@ -57,10 +57,6 @@ let tinyscroller = new Tinyscroller(target, {
 	<img src="assets/tinyscroller-example-1.png">
 </p>
 
-## Documentation
-
-See the [docs](https://t99.github.io/tinyscroller) for full documentation.
-
 ## License
 
 tinyscroller is made available under the GNU General Public License v3.
