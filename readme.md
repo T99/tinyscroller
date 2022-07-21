@@ -1,4 +1,4 @@
-# <img align="left" height="35" src="https://github.com/T99/tinyscroller/blob/development/assets/tinyscroller.svg"> Tinyscroller
+# <img align="left" height="35" src="assets/tinyscroller.svg"> Tinyscroller
 
 An absolutely abnormally abysmally small image scroller.
 
