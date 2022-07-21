@@ -38,6 +38,20 @@ body {
     
 }
 
+.page-title > * {
+    
+    display: inline;
+    
+}
+
+.page-title > img {
+    
+    height: 2ch;
+    vertical-align: middle;
+    margin: 18px;
+    
+}
+
 .tinyscroller {
     
     width: 50%;

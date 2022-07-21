@@ -21,12 +21,161 @@
  */
 
 .tinyscroller__outercontainer {
-
+    
     overflow: hidden;
+    position: relative;
 
 }
 
-.tinyscroller__innercontainer {
+.tinyscroller__progresscontainer {
+    
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    right: 50%;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.tinyscroller__progressdot {
+    
+    flex: 0 0 auto;
+    height: 10px;
+    width: 10px;
+    margin: 10px;
+    clip-path: circle(50% at center);
+    background-color: white;
+    cursor: pointer;
+    
+}
+
+.tinyscroller__arrowcontainer {
+
+    position: absolute;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    
+}
+
+.tinyscroller__arrowcontainer--direction-left,
+.tinyscroller__arrowcontainer--direction-right {
+
+    top: 50%;
+    bottom: 50%;
+
+}
+
+.tinyscroller__arrowcontainer--direction-left > .tinyscroller__arrow,
+.tinyscroller__arrowcontainer--direction-right > .tinyscroller__arrow {
+
+    height: 30px;
+    width: 15px;
+
+}
+
+.tinyscroller__arrowcontainer--direction-up,
+.tinyscroller__arrowcontainer--direction-down {
+
+    left: 50%;
+    right: 50%;
+
+}
+
+.tinyscroller__arrowcontainer--direction-up > .tinyscroller__arrow,
+.tinyscroller__arrowcontainer--direction-down > .tinyscroller__arrow {
+
+    height: 15px;
+    width: 30px;
+
+}
+
+.tinyscroller__arrowcontainer--direction-left {
+
+    left: 0;
+
+}
+
+.tinyscroller__arrowcontainer--direction-left > .tinyscroller__arrow {
+
+    clip-path: polygon(
+         50%   0%,
+        100%   0%,
+         50%  50%,
+        100% 100%,
+         50% 100%,
+          0%  50%
+    );
+
+}
+
+.tinyscroller__arrowcontainer--direction-right {
+
+    right: 0;
+
+}
+
+.tinyscroller__arrowcontainer--direction-right > .tinyscroller__arrow {
+
+    clip-path: polygon(
+          0%   0%,
+         50%   0%,
+        100%  50%,
+         50% 100%,
+          0% 100%,
+         50%  50%
+    );
+
+}
+
+.tinyscroller__arrowcontainer--direction-up {
+
+    top: 0;
+
+}
+
+.tinyscroller__arrowcontainer--direction-up > .tinyscroller__arrow {
+
+    clip-path: polygon(
+        100%  50%,
+        100% 100%,
+         50%  50%,
+          0% 100%,
+          0%  50%,
+         50%   0%
+    );
+
+}
+
+.tinyscroller__arrowcontainer--direction-down {
+
+    bottom: 0;
+
+}
+
+.tinyscroller__arrowcontainer--direction-down > .tinyscroller__arrow {
+
+    clip-path: polygon(
+        100%   0%,
+        100%  50%,
+         50% 100%,
+          0%  50%,
+          0%   0%,
+         50%  50%
+    );
+
+}
+
+.tinyscroller__arrow {
+
+    background-color: white;
+    
+}
+
+.tinyscroller__imgcontainer {
 
     height: 100%;
     width: 100%;
@@ -37,13 +186,13 @@
     
 }
 
-.tinyscroller__innercontainer::-webkit-scrollbar {
+.tinyscroller__imgcontainer::-webkit-scrollbar {
     
     display: none;
     
 }
 
-.tinyscroller__innercontainer--orientation-horizontal {
+.tinyscroller__imgcontainer--orientation-horizontal {
 
     overflow-x: scroll;
     overflow-y: hidden;
@@ -51,7 +200,7 @@
 
 }
 
-.tinyscroller__innercontainer--orientation-vertical {
+.tinyscroller__imgcontainer--orientation-vertical {
 
     flex-direction: column;
     overflow-x: hidden;
@@ -60,7 +209,7 @@
     
 }
 
-.tinyscroller__imgcontainer {
+.tinyscroller__imgwrapper {
 
     flex: 0 0 auto;
     height: 100%;

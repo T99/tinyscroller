@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
 	
 	const tinyscroller = new Tinyscroller(".tinyscroller", {
 		fit: "fill",
+		orientation: "horizontal",
+		progress: true,
 	});
 	
 	const IMAGE_COUNT = 5;
