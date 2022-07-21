@@ -153,11 +153,7 @@ export class Tinyscroller {
 			
 		}
 		
-		if (this.options.arrows === true) {
-			
-			
-			
-		}
+		if (this.options.arrows === true) this.enableArrows();
 		
 		const DEBOUNCE_TIMING = 75;
 		
